@@ -1,0 +1,86 @@
+[
+  {
+    "id": "projectile-motion",
+    "title": "Projectile Motion",
+    "description": "Explore trajectory, velocity vectors, and gravity.",
+    "category": "Physics",
+    "color": "blue-500"
+  },
+  {
+    "id": "bouncing-balls",
+    "title": "Bouncing Balls",
+    "description": "Investigate collisions, gravity, drag, and mass.",
+    "category": "Physics",
+    "color": "blue-600"
+  },
+  {
+    "id": "pendulum-wave",
+    "title": "Pendulum Wave",
+    "description": "Observe phase synchronization and damping.",
+    "category": "Physics",
+    "color": "blue-700"
+  },
+  {
+    "id": "spring-mass",
+    "title": "Spring Mass",
+    "description": "Study Hooke's Law, energy, and stiffness.",
+    "category": "Physics",
+    "color": "blue-800"
+  },
+  {
+    "id": "gas-laws",
+    "title": "Gas Laws",
+    "description": "Demonstrate PV=nRT with particles in a box.",
+    "category": "Chemistry",
+    "color": "orange-500"
+  },
+  {
+    "id": "ph-scale",
+    "title": "pH Scale",
+    "description": "Test acidity and basicity with indicators.",
+    "category": "Chemistry",
+    "color": "orange-600"
+  },
+  {
+    "id": "atomic-orbitals",
+    "title": "Atomic Orbitals",
+    "description": "Visualize s, p, d orbitals and energy levels.",
+    "category": "Chemistry",
+    "color": "orange-700"
+  },
+  {
+    "id": "fractal-tree",
+    "title": "Fractal Tree",
+    "description": "Create recursive L-systems with adjustable angles.",
+    "category": "Math",
+    "color": "green-500"
+  },
+  {
+    "id": "fourier-series",
+    "title": "Fourier Series",
+    "description": "Decompose waveforms into sine waves.",
+    "category": "Math",
+    "color": "green-600"
+  },
+  {
+    "id": "conic-sections",
+    "title": "Conic Sections",
+    "description": "Generate ellipses, parabolas, and hyperbolas.",
+    "category": "Math",
+    "color": "green-700"
+  },
+  {
+    "id": "population-growth",
+    "title": "Population Growth",
+    "description": "Model logistic and exponential growth.",
+    "category": "Biology",
+    "color": "teal-500"
+  },
+  {
+    "id": "wave-interference",
+    "title": "Wave Interference",
+    "description": "Experiment with ripples and slit diffraction.",
+    "category": "Biology",
+    "color": "teal-600"
+  }
+]

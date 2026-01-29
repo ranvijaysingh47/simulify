@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulify Interactive Simulations</title>
+    <meta name="description" content="Interactive Science & Math Simulations - Build intuition through exploration">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        phetBlue: '#0052CC',
+                        phetOrange: '#FF6C00',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 flex flex-col min-h-screen text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-phetBlue text-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="window.location.reload()">
+                <!-- Logo Placeholder -->
+                <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-phetBlue font-bold">S
+                </div>
+                <h1 class="text-xl font-bold tracking-tight">Simulify <span
+                        class="font-normal opacity-90">Simulations</span></h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-blue-200 transition">Simulations</a>
+                <a href="#" class="hover:text-blue-200 transition">Learn</a>
+                <a href="#" class="hover:text-blue-200 transition">About</a>
+            </nav>
+            <div class="relative">
+                <input type="text" placeholder="Search..."
+                    class="bg-blue-700 text-white placeholder-blue-300 rounded-full py-1 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-white">
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white border-b border-gray-200 py-12 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Interactive Science & Math</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Build intuition through exploration with our open-source
+                HTML5 simulations.</p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <div class="bg-gray-50 border-b border-gray-200 sticky top-0 z-10 shadow-sm" id="filters">
+        <div class="container mx-auto px-4 py-3 flex flex-wrap gap-2 justify-center" id="category-filters">
+            <button
+                class="filter-btn active px-4 py-1 rounded-full text-sm font-medium bg-phetBlue text-white hover:bg-blue-700 transition"
+                data-category="All">All</button>
+            <button
+                class="filter-btn px-4 py-1 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-300 hover:bg-gray-100 transition"
+                data-category="Physics">Physics</button>
+            <button
+                class="filter-btn px-4 py-1 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-300 hover:bg-gray-100 transition"
+                data-category="Chemistry">Chemistry</button>
+            <button
+                class="filter-btn px-4 py-1 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-300 hover:bg-gray-100 transition"
+                data-category="Math">Math</button>
+            <button
+                class="filter-btn px-4 py-1 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-300 hover:bg-gray-100 transition"
+                data-category="Biology">Biology</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div id="sim-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Sim cards will be injected here by JS -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2026 Simulify Interactive Simulations. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Simulation Modal -->
+    <div id="sim-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-90 transition-opacity backdrop-blur-sm" id="modal-backdrop">
+        </div>
+        <div class="relative w-full h-full flex flex-col bg-white overflow-hidden">
+            <!-- Modal Header -->
+            <div class="bg-phetBlue text-white px-4 py-3 flex justify-between items-center shadow-lg shrink-0">
+                <h3 class="text-xl font-bold" id="modal-title">Simulation Title</h3>
+                <div class="flex items-center space-x-4">
+                    <button id="modal-close" class="hover:text-gray-200 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="flex-grow flex flex-col md:flex-row overflow-hidden">
+                <!-- Canvas Area -->
+                <div class="flex-grow bg-gray-100 relative items-center justify-center flex overflow-hidden"
+                    id="canvas-container">
+                    <canvas id="sim-canvas" width="800" height="600"
+                        class="bg-white shadow-lg max-w-full max-h-full object-contain"></canvas>
+
+                    <!-- Sim Controls Overlay (optional, depending on sim design) or Sidebar -->
+                </div>
+
+                <!-- Controls Sidebar -->
+                <div class="w-full md:w-80 bg-gray-50 border-l border-gray-200 p-6 overflow-y-auto shrink-0 z-10"
+                    id="controls-panel">
+                    <div class="mb-6">
+                        <p class="text-sm text-gray-600 mb-4" id="modal-desc">Sim description goes here.</p>
+                        <!-- Explainer Box -->
+                        <div class="bg-blue-50 border-l-4 border-phetBlue p-3 mb-6 rounded-r">
+                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">How it works</h4>
+                            <p class="text-sm text-gray-800" id="modal-explainer">Explainer text...</p>
+                        </div>
+                        <div class="flex space-x-2 mb-4">
+                            <button id="sim-play-pause"
+                                class="flex-1 bg-phetBlue text-white py-2 rounded hover:bg-blue-700 transition flex items-center justify-center">
+                                <span id="play-icon">▶</span>
+                            </button>
+                            <button id="sim-reset"
+                                class="flex-1 bg-gray-200 text-gray-700 py-2 rounded hover:bg-gray-300 transition">Reset</button>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Controls -->
+                    <div id="sim-controls" class="space-y-6">
+                        <!-- Sliders and inputs injected here -->
+                    </div>
+
+                    <!-- Data Display -->
+                    <div id="sim-data"
+                        class="mt-8 bg-white p-4 rounded shadow-sm text-sm font-mono border border-gray-200">
+                        <!-- Real-time data injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/physics.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+
+</html>

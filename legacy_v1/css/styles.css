@@ -1,0 +1,78 @@
+/* Custom styles complementing Tailwind */
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+canvas {
+    image-rendering: pixelated; /* Sharp rendering for some sims */
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* Range Input Styling (Slider) */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+    cursor: pointer;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 9999px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #0052CC;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6px; /* center thumb on track */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: transform 0.1s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    background: #0042a3;
+}
+
+/* Scrollbar for sidebar */
+#controls-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+#controls-panel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#controls-panel::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+#controls-panel::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Card Hover Effects */
+.sim-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sim-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.sim-preview-canvas {
+    pointer-events: none; /* Previews are visual only, click opens modal */
+}
